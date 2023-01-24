@@ -1,0 +1,234 @@
+body {
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* START BUTTON */
+
+.game-intro{
+    /* display:flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto; */
+}
+
+#start-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+#start-button {
+    background-color:rgb(121, 9, 121);
+    color: rgb(255, 174, 0);
+    font-size: 2em;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px #6a4c93;
+    transition: all 0.3s ease-in;
+}
+
+#start-button:hover {
+    background-color: rgb(255, 187, 0);
+    color:rgb(121, 9, 121);
+    cursor: pointer;
+    box-shadow: 2px 2px 10px #6a4c93;
+}
+
+
+
+/* CURTAIN SECTION */
+.curtain {
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    background-image: url(../images/intro1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: transform 2s ease-in;
+}
+
+
+#start-button {
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    z-index: 2;
+    position: absolute;
+    
+}
+
+.curtain.left {
+    left: 0;
+    position: absolute;
+    /* animation: moveLeft 8s ease-in forwards; */
+}
+
+.curtain.right {
+    right: 0;
+    position: absolute;
+    /* animation: moveRight 8s ease-in forwards; */
+}
+
+.curtain.open {
+    animation-name: moveLeft, moveRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+
+
+/* CHARACTER SECTION  */
+
+.character-selection{
+    display: flex;
+    align-items: center;
+}
+
+
+.character-text h2 {
+        color: #6a4c93;
+        font-size: 3em;
+        text-shadow: 2px 2px #fff;
+}
+
+.character{
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top:100px;
+    margin-bottom: 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.lifebar{
+
+}
+
+.speedbar{
+
+}
+
+
+img{
+    width: 200px;
+    height:400px;
+}
+
+
+.character-ctn{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    /* width: fit-content; */
+}
+
+
+#play-button{
+        background-color: rgb(121, 9, 121);
+        color: rgb(255, 174, 0);
+        font-size: 2em;
+        padding: 10px 20px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 5px #6a4c93;
+        transition: all 0.3s ease-in;
+    }
+
+    #play-button:hover {
+        background-color: rgb(255, 187, 0);
+        color: rgb(121, 9, 121);
+        cursor: pointer;
+        box-shadow: 2px 2px 10px #6a4c93;
+    }
+
+#select-alice {
+    background-color: rgb(0, 5, 109);
+    color: rgb(255, 255, 255);
+    font-size: 1em;
+    padding: 5px 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px #6a4c93;
+    transition: all 0.3s ease-in;
+    margin-top: 15px;
+    
+}
+
+#select-alice:hover {
+    background-color: rgb(188, 188, 188);
+    color: rgb(20, 0, 67);
+    cursor: pointer;
+    box-shadow: 2px 2px 10px #6a4c93;
+}
+
+
+#select-cat {
+    background-color: rgb(119, 0, 128);
+    color: rgb(255, 255, 255);
+    font-size: 1em;
+    padding: 5px 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px #6a4c93;
+    transition: all 0.3s ease-in;
+    margin-top: 15px;
+
+}
+
+#select-cat:hover {
+    background-color: rgb(188, 188, 188);
+    color: rgb(20, 0, 67);
+    cursor: pointer;
+    box-shadow: 2px 2px 10px #6a4c93;
+}
+
+#select-madhatter {
+    background-color: rgb(0, 78, 3);
+    color: rgb(255, 255, 255);
+    font-size: 1em;
+    padding: 5px 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px #6a4c93;
+    transition: all 0.3s ease-in;
+    margin-top: 15px;
+
+}
+
+#select-madhatter:hover {
+    background-color: rgb(188, 188, 188);
+    color: rgb(20, 0, 67);
+    cursor: pointer;
+    box-shadow: 2px 2px 10px #6a4c93;
+}
+
+
+/* GAME SCREEN  */
+
+.new-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+
+canvas {
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+}

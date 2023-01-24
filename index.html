@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/styles.css" />
+    <title>Welcome back to Wonderland!</title>
+</head>
+<body>
+   
+
+    <div class="game-intro">
+        <div id="start-button-container">
+            <button id="start-button">Enter Game</button>
+        </div>
+        <div class="curtain left"></div>
+        <div class="curtain right"></div>
+    </div>
+
+
+    <div class = "character-selection">
+        <div id="character-text">
+                <h2>Welcome to Wonderland</h2>
+                <p>Select your character. Note that each of them has different specificities.</p>
+        </div>
+
+        <div class ="character-ctn">
+
+            <div class="character 1">
+                <img src="images/alice.png" alt="Alice"/>
+                <button id="select-alice">Little Alice</button>
+                <div class="lifebar"></div>
+                <div class="speedbar"></div>
+            </div>
+        
+            <div class="character 2">
+                <img src="images/cat.png" alt="The Cheshire cat" />
+                <button id="select-cat">The Cheshire cat</button>
+                <div class="lifebar"></div>
+                <div class="speedbar"></div>
+            </div>
+        
+            <div class="character 3">
+                <img src="images/madhatter.png" alt="The Madhatter" />
+                <button id="select-madhatter">The nutter Madhatter</button>
+                <div class="lifebar"></div>
+                <div class="speedbar"></div>
+            </div>
+
+        </div>
+        <br>
+        <button id="play-button">Play Game</button>
+    </div>
+
+
+    <div class="new-screen">
+            <canvas id="canvas">  </canvas>      
+    </div>
+
+   
+
+
+
+    <script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
