@@ -1,6 +1,3 @@
-// Alice in Wonderlan JS doc
-
-
 //Setting up the game space 
 const myCanvas = document.querySelector("canvas");
 const ctx = myCanvas.getContext("2d");
@@ -22,22 +19,10 @@ const catSelection = document.querySelector("#select-cat");
 const madhatterSelection = document.querySelector("#select-madhatter");
 
 
-//Clicking on the "Start button" to open the curtains and seing the select character screen behind
-document.getElementById("start-button").onclick = () => {
-    startButton.style.display = "none";
-    leftCurtain.style.transform = "translateX(-100%)";
-    rightCurtain.style.transform = "translateX(100%)";
-    playButton.style.display = "none";
-    // playButton.style.display = "block";
-    characterSelection.style.display = "block";
-};
-
-
-//Clicking on the "Start button" to open the curtains and seing the select character screen behind
-// document.querySelector("#play-button").onclick = () => {
-//     playGame();
-// };
-
+const endGameSection = document.querySelector(".end-game-screen");
+const winScreen = document.querySelector(".win-screen");
+const gameOverLife = document.querySelector(".game-over-life");
+const startOverBtn = document.querySelectorAll(".start-over-btn");
 
 // Defining players
 let playerX = 50;
@@ -49,34 +34,6 @@ let playerSpeed = 5;
 
 // Adding event listeners for character selection & displaying "Play" button only after the user selects a character
 const player = new Image ()
-
-aliceSelection.addEventListener("click", () => {
-    player.src = "images/alice.png";
-    playButton.style.display = "block";
-});
-
-catSelection.addEventListener("click", () => {
-    player.src = "images/cat.png";
-    playButton.style.display = "block";
-});
-
-madhatterSelection.addEventListener("click", () => {
-    player.src = "images/madhatter.png";
-    playButton.style.display = "block";
-});
-
-
-// document.querySelector("#play-button").onclick = () => {
-//     if(player.character === "") {
-//         return "Select a character!"
-//     } else {
-//         // playGame();
-//         newScreen.style.display = "block";
-//         canvas.style.display ="block";
-//         drawCharacter();
-//         // Start the game loop
-//     }
-// };
 
 
 const drawCharacter = () => {
@@ -90,6 +47,8 @@ document.querySelector("#play-button").onclick = () => {
     newScreen.style.display = "block";
     canvas.style.display ="block";
 };
+
+
 
 
 //Creating the components 
@@ -118,7 +77,7 @@ const obsMush = new Image();
   let obsMushY;
   let obsMushWidth = 10;
   let obsMushHeight = 10;
-  let obsMushSpeed = -3;
+  let obsMushSpeed = -3.2;
 
 
 const drawMushObstacles = () => {
@@ -137,7 +96,7 @@ const obsCards = new Image();
   let obsCardsY;
   let obsCardsWidth = 60;
   let obsCardsHeight = 35;
-  let obsCardsSpeed = -1.5;
+  let obsCardsSpeed = -1.2;
 
 
 const drawCardsObstacles = () => {
@@ -157,7 +116,7 @@ const obsPotion = new Image();
   let obsPotionY;
   let obsPotionWidth = 45;
   let obsPotionHeight = 15;
-  let obsPotionSpeed = -2;
+  let obsPotionSpeed = -1.7;
 
 
 const drawPotionObstacles = () => {
@@ -192,27 +151,43 @@ const checkCollision =() => {
     let obsCardsTop = obsCardsY;
     let obsCardsBottom = obsCardsY + obsCardsHeight;
 
-    // let obsPotionsLeft = obsPotionsX;
-    // let obsPotionsRight = obsPotionsX + obsPotionsWidth;
-    // let obsPotionsTop = obsPotionsY;
-    // let obsPotionsBottom = obsPotionsY + obsPotionsHeight;
+    let obsPotionLeft = obsPotionX;
+    let obsPotionRight = obsPotionX + obsPotionWidth;
+    let obsPotionTop = obsPotionY;
+    let obsPotionBottom = obsPotionY + obsPotionHeight;
 
 
     // Mushroom collision (point loss)
     if (playerRight > obsMushLeft && playerLeft < obsMushRight && playerBottom > obsMushTop && playerTop < obsMushBottom) {
         score -= 10;
         gameOver = false;
+        // Do this to make sure the mushroom goes up and disappears once touched
+        obsMushY = 1000;
+        if (score === -10){
+            gameOver = true;
+        }
     }
 
     // For cards - game over 
 
     if (playerRight > obsCardsLeft && playerLeft < obsCardsRight && playerBottom > obsCardsTop && playerTop < obsCardsBottom) {
-        alert ("Captured by the guard");
         gameOver = true;
-}
+    }
 
     // For Potions - winning points 
+if(score >= 100){
+    gameOver = true;
+}
 
+    if (playerRight > obsPotionLeft && playerLeft < obsPotionRight && playerBottom > obsPotionTop && playerTop < obsPotionBottom) {
+        score += 50;
+        gameOver = false;
+        // Do this to make sure the mushroom goes up and disappears once touched
+        obsPotionY = 1000;
+        // if (win === true){
+        //    winGame();
+        // }
+    }
 
 }
     
@@ -243,23 +218,65 @@ let isMovingUp = false;
 
 //Starting the game only when pressing the playbutton:
 // const playGame = () => { 
-    window.onload = () => {
+window.addEventListener('load', () => {
+
+
+//Clicking on the "Start button" to open the curtains and seing the select character screen behind
+document.getElementById("start-button").onclick = () => {
+    startButton.style.display = "none";
+    leftCurtain.style.transform = "translateX(-100%)";
+    rightCurtain.style.transform = "translateX(100%)";
+    playButton.style.display = "none";
+    characterSelection.style.display = "block";
+    endGameSection.style.display = "none";
+};
+
+
+
+
+aliceSelection.addEventListener("click", () => {
+    player.src = "images/alice.png";
+    playButton.style.display = "block";
+});
+
+catSelection.addEventListener("click", () => {
+    player.src = "images/cat.png";
+    playButton.style.display = "block";
+});
+
+madhatterSelection.addEventListener("click", () => {
+    player.src = "images/madhatter.png";
+    playButton.style.display = "block";
+});
+
+
 
 document.querySelector("#play-button").onclick = () => {
     if(player.character === "") {
         return "Select a character!"
     } else {
-        // playGame();
         newScreen.style.display = "block";
         canvas.style.display ="block";
+        characterSelection.style.display = "none";
         drawCharacter();
-        // Start the game loop
     }
-};
         //  document.querySelector("#play-button").onclick = () => {
             startGame();
         //  };
-        
+
+
+startOverBtn.forEach(btn => {
+    btn.addEventListener("click", () => {
+        characterSelection.style.display = "block";
+        console.log("Btn clicked")
+    });
+});
+
+
+};    
+
+
+
     // Global animation function
     function animate(){
     // ctx.clearRect(0,0, canvas.width, canvas.height)
@@ -317,21 +334,48 @@ document.querySelector("#play-button").onclick = () => {
 
 
 
-
-    // starting the game
-    if(!gameOver){
-        animateId = requestAnimationFrame(animate);
-        }else{
-        cancelAnimationFrame(animateId);
-        characterSelection.style.display = "block"
-        }
+    function endGame(){
+        console.log("End game")
+        canvas.style.display = "none";
+        myCanvas.style.display = "none";
+        characterSelection.style.display = "none"
+        endGameSection.style.display = "block";
+        winScreen.style.display = "none";
+        gameOverLife.style.display = "block";
+        startOverBtn.forEach(btn => btn.style.display = "block");
     }
 
-    
+
+    function winGame(){
+        console.log("Win")
+        canvas.style.display = "none";
+        myCanvas.style.display = "none";
+        characterSelection.style.display = "none";
+        endGameSection.style.display = "block";
+        winScreen.style.display = "block";
+        gameOverLife.style.display = "none";
+        startOverBtn.forEach(btn => btn.style.display = "block");
+    }    
 
 
+
+    if(!gameOver){
+        animateId = requestAnimationFrame(animate);
+        } 
+        else {
+            cancelAnimationFrame(animateId);
+            if(score>=100){
+                winGame();
+            }else{
+                endGame();
+            }
+        }
+
+    }
+
+    // starting the game
     function startGame() {
-        animate();
+        animate(); 
     }
 
 
@@ -362,6 +406,4 @@ document.querySelector("#play-button").onclick = () => {
         isMovingUp = false;
          })
 
-
-    };
-// };
+ });
