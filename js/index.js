@@ -18,7 +18,6 @@ const aliceSelection = document.querySelector("#select-alice");
 const catSelection = document.querySelector("#select-cat");
 const madhatterSelection = document.querySelector("#select-madhatter");
 
-
 const endGameSection = document.querySelector(".end-game-screen");
 const winScreen = document.querySelector(".win-screen");
 const gameOverLife = document.querySelector(".game-over-life");
@@ -26,10 +25,10 @@ const startOverBtn = document.querySelectorAll(".start-over-btn");
 
 // Defining players
 let playerX = 50;
-let playerY = 40;
+let playerY = 50;
 let playerHeight = 40;
 let playerWidth = 40;
-let playerSpeed = 5;
+let playerSpeed = 3;
 
 
 // Adding event listeners for character selection & displaying "Play" button only after the user selects a character
@@ -41,25 +40,15 @@ const drawCharacter = () => {
 }
 
 
-
-// Clicking on the "Play game button"
-document.querySelector("#play-button").onclick = () => {
-    newScreen.style.display = "block";
-    canvas.style.display ="block";
-};
-
-
-
-
 //Creating the components 
 
 //The backgrounds
 const bgImg = new Image();
 bgImg.src = "images/bg-3.jpg";
-;
+
 const bgImg2 = new Image();
 bgImg2.src = "images/bg-3.jpg";
-;
+
 let bg1X=0;
 let bg2X =  - myCanvas.width;
 
@@ -97,7 +86,6 @@ const obsCards = new Image();
   let obsCardsWidth = 60;
   let obsCardsHeight = 35;
   let obsCardsSpeed = -1.2;
-
 
 const drawCardsObstacles = () => {
     obsCardsX += obsCardsSpeed;
@@ -180,15 +168,11 @@ if(score >= 100){
 }
 
     if (playerRight > obsPotionLeft && playerLeft < obsPotionRight && playerBottom > obsPotionTop && playerTop < obsPotionBottom) {
-        score += 50;
+        score += 20;
         gameOver = false;
         // Do this to make sure the mushroom goes up and disappears once touched
         obsPotionY = 1000;
-        // if (win === true){
-        //    winGame();
-        // }
     }
-
 }
     
 
@@ -201,8 +185,6 @@ if(score >= 100){
 
 
 
-
-
 // Game variables 
 let gameOver = false; 
 let animateId;
@@ -212,8 +194,6 @@ let isMovingDown = false;
 let isMovingLeft = false;
 let isMovingRight = false;
 let isMovingUp = false;
-
-
 
 
 //Starting the game only when pressing the playbutton:
@@ -230,7 +210,6 @@ document.getElementById("start-button").onclick = () => {
     characterSelection.style.display = "block";
     endGameSection.style.display = "none";
 };
-
 
 
 
@@ -258,28 +237,31 @@ document.querySelector("#play-button").onclick = () => {
         newScreen.style.display = "block";
         canvas.style.display ="block";
         characterSelection.style.display = "none";
+        winScreen.style.display = "none";
+        gameOverLife.style.display = "none";
+        // startOverBtn.style.display = "none";
+        endGameSection.style.display ="none";
         drawCharacter();
     }
-        //  document.querySelector("#play-button").onclick = () => {
-            startGame();
-        //  };
+        gameOver = false; 
+        startGame();
+        gameSong.play();
+                
+
+};
 
 
-startOverBtn.forEach(btn => {
-    btn.addEventListener("click", () => {
-        characterSelection.style.display = "block";
-        console.log("Btn clicked")
+    startOverBtn.forEach(btn => {
+        btn.addEventListener("click", () => {
+            // starts the game over by reloading the page
+            location.reload();  
+        });
     });
-});
-
-
-};    
-
 
 
     // Global animation function
     function animate(){
-    // ctx.clearRect(0,0, canvas.width, canvas.height)
+
 
     // Adding the backgrounds 
     ctx.drawImage(bgImg, bg1X, 0, myCanvas.width, myCanvas.height);
@@ -335,28 +317,30 @@ startOverBtn.forEach(btn => {
 
 
     function endGame(){
-        console.log("End game")
         canvas.style.display = "none";
         myCanvas.style.display = "none";
         characterSelection.style.display = "none"
         endGameSection.style.display = "block";
         winScreen.style.display = "none";
         gameOverLife.style.display = "block";
-        startOverBtn.forEach(btn => btn.style.display = "block");
+        newScreen.style.display = "none";
+        gameOver = true;
+        
+        // startOverBtn.forEach(btn => btn.style.display = "block");
     }
 
 
     function winGame(){
-        console.log("Win")
         canvas.style.display = "none";
         myCanvas.style.display = "none";
         characterSelection.style.display = "none";
         endGameSection.style.display = "block";
         winScreen.style.display = "block";
         gameOverLife.style.display = "none";
-        startOverBtn.forEach(btn => btn.style.display = "block");
+        newScreen.style.display = "none";
+        gameOver = true;
+        // startOverBtn.forEach(btn => btn.style.display = "block");
     }    
-
 
 
     if(!gameOver){
@@ -364,20 +348,20 @@ startOverBtn.forEach(btn => {
         } 
         else {
             cancelAnimationFrame(animateId);
+            
+            gameoverSong.play();
             if(score>=100){
                 winGame();
             }else{
                 endGame();
             }
-        }
-
     }
 
     // starting the game
     function startGame() {
+        ctx.clearRect(0,0, canvas.width, canvas.height);
         animate(); 
     }
-
 
 
     // Adding event listeners 
@@ -405,5 +389,14 @@ startOverBtn.forEach(btn => {
         isMovingRight = false;
         isMovingUp = false;
          })
+
+
+// Music 
+let gameSong= new Audio("sounds/forest-walk.mp3")
+gameSong.volume = 0.3;
+
+let gameoverSong= new Audio("sounds/punctus.mp3")
+gameoverSong.volume = 0.2;
+
 
  });
