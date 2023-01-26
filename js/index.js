@@ -153,6 +153,7 @@ const checkCollision =() => {
         obsMushY = 1000;
         if (score === -10){
             gameOver = true;
+
         }
     }
 
@@ -160,6 +161,7 @@ const checkCollision =() => {
 
     if (playerRight > obsCardsLeft && playerLeft < obsCardsRight && playerBottom > obsCardsTop && playerTop < obsCardsBottom) {
         gameOver = true;
+        
     }
 
     // For Potions - winning points 
@@ -209,6 +211,7 @@ document.getElementById("start-button").onclick = () => {
     playButton.style.display = "none";
     characterSelection.style.display = "block";
     endGameSection.style.display = "none";
+     gameSong.play();
 };
 
 
@@ -216,6 +219,7 @@ document.getElementById("start-button").onclick = () => {
 aliceSelection.addEventListener("click", () => {
     player.src = "images/alice.png";
     playButton.style.display = "block";
+    
 });
 
 catSelection.addEventListener("click", () => {
@@ -245,6 +249,8 @@ document.querySelector("#play-button").onclick = () => {
     }
         gameOver = false; 
         startGame();
+        gameSong.pause();
+        gameSong.currentTime = 19;
         gameSong.play();
                 
 
@@ -325,6 +331,7 @@ document.querySelector("#play-button").onclick = () => {
         gameOverLife.style.display = "block";
         newScreen.style.display = "none";
         gameOver = true;
+        gameSong.pause();
         
         // startOverBtn.forEach(btn => btn.style.display = "block");
     }
@@ -339,6 +346,7 @@ document.querySelector("#play-button").onclick = () => {
         gameOverLife.style.display = "none";
         newScreen.style.display = "none";
         gameOver = true;
+        gameSong.pause()
         // startOverBtn.forEach(btn => btn.style.display = "block");
     }    
 
@@ -348,13 +356,15 @@ document.querySelector("#play-button").onclick = () => {
         } 
         else {
             cancelAnimationFrame(animateId);
-            
+            gameoverSong.currentTime = 21;
             gameoverSong.play();
             if(score>=100){
                 winGame();
             }else{
                 endGame();
             }
+            
+        }
     }
 
     // starting the game

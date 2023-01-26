@@ -10,25 +10,34 @@
    
 
     <div class="game-intro">
-        <div id="start-button-container">
-            <button id="start-button">Enter Game</button>
-        </div>
         <div class="curtain left"></div>
+        <div id="start-button-container">
+            <button id="start-button">Welcome to Wonderland</button>
+        </div>
         <div class="curtain right"></div>
     </div>
 
 
     <div class = "character-selection">
         <div id="character-text">
-                <h2>Welcome to Wonderland</h2>
-                <p>Select your character. Note that each of them has different specificities.</p>
+            <div class="text-char-ctn">
+                <h2>Welcome back to Wonderland</h2>
+                <p> First, you must choose who you wish to be - will it be the curious Alice, the mad Hatter, or
+                the mischievous Cheshire Cat?</p>
+                
+               <p> Once you have selected your character, your journey begins in the mysterious forest. To get out of the forest and win
+                the game, you must collect "drink me" potions (+20 points) and reach a total of 100 points. Be careful, as there are
+                also mushrooms (-10 points) and card guards (gameover) lurking in the forest.</p>
+
+                <p>So, gather your wits and set off on your adventure. Remember, "Off with their heads!" and good luck!</p>
+            </div>
         </div>
 
         <div class ="character-ctn">
 
             <div class="character 1">
                 <img src="images/alice.png" alt="Alice"/>
-                <button id="select-alice">Little Alice</button>
+                <button id="select-alice">Curious Alice</button>
                 <div class="lifebar"></div>
             </div>
         
@@ -40,24 +49,28 @@
         
             <div class="character 3">
                 <img src="images/madhatter.png" alt="The Madhatter" />
-                <button id="select-madhatter">The nutter Madhatter</button>
+                <button id="select-madhatter">The mad Hatter</button>
                 <div class="lifebar"></div>
             </div>
 
         </div>
         <br>
-        <button id="play-button">Play Game</button>
+        <button id="play-button">Enter Wonderland</button>
     </div>
 
     <div class="end-game-screen">
         <div class="win-screen">
-            <p>Congratulations, you've managed to get out of the forst!</p>
-            <button class="start-over-btn">Start over!</button>
+            <div class="text-win-ctn">
+                <p class="text-win">Congratulations, you've managed to get out of the forest!</p>
+                <button class="start-over-btn">Play again!</button>
+            </div>
         </div>
 
         <div class="game-over-life">
-            <p>Oh no! You've lost.</p>
-            <button class="start-over-btn">Start over!</button>
+                <div class="text-lose-ctn">
+                    <p class="text-lose">Oh no, you've lost the quest! </p>
+                    <button class="start-over-btn">Start over!</button>
+                </div>
         </div>
 
     </div>
