@@ -12,7 +12,9 @@
     <div class="game-intro">
         <div class="curtain left"></div>
         <div id="start-button-container">
-            <button id="start-button">Welcome to Wonderland</button>
+            <button id="start-button">
+                <img class="logo-intro" src="images/white.png" alt="wonderland">
+            </button>
         </div>
         <div class="curtain right"></div>
     </div>
@@ -20,15 +22,10 @@
 
     <div class = "character-selection">
         <div id="character-text">
+            <img class="logo" src="images/white.png" alt="wonderland">
             <div class="text-char-ctn">
-                <h2>Welcome back to Wonderland</h2>
-                <p> First, you must choose who you wish to be - will it be the curious Alice, the mad Hatter, or
-                the mischievous Cheshire Cat?</p>
-                
-               <p> Once you have selected your character, your journey begins in the mysterious forest. To get out of the forest and win
-                the game, you must collect "drink me" potions (+20 points) and reach a total of 100 points. Be careful, as there are
-                also mushrooms (-10 points) and card guards (gameover) lurking in the forest.</p>
-
+                <Once> To get out of the mysterious dark wood and win the game, you must collect <img class="text-img" src="images/potion.png" alt="potion"/> (+20 points) and reach a total of 100 points. Be careful, as there are
+                also <img class="text-img" src="images/mush.png" alt="mushroom" /> (-10 points) and <img class="text-img" src="images/card.png" alt="card"/>(gameover) lurking in there.</p>
                 <p>So, gather your wits and set off on your adventure. Remember, "Off with their heads!" and good luck!</p>
             </div>
         </div>
@@ -61,7 +58,7 @@
     <div class="end-game-screen">
         <div class="win-screen">
             <div class="text-win-ctn">
-                <p class="text-win">Congratulations, you've managed to get out of the forest!</p>
+                <p class="text-win">Congratulations, you've managed to get out of the dark woods!</p>
                 <button class="start-over-btn">Play again!</button>
             </div>
         </div>
@@ -77,7 +74,7 @@
 
 
     <div class="new-screen">
-            <canvas id="canvas">  </canvas>      
+            <canvas id="canvas" width='600px' height='450px'>  </canvas>      
     </div>
 
    

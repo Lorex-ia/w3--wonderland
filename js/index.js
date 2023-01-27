@@ -26,9 +26,9 @@ const startOverBtn = document.querySelectorAll(".start-over-btn");
 // Defining players
 let playerX = 50;
 let playerY = 50;
-let playerHeight = 40;
-let playerWidth = 40;
-let playerSpeed = 3;
+let playerHeight = 110;
+let playerWidth = 70;
+let playerSpeed = 4.3;
 
 
 // Adding event listeners for character selection & displaying "Play" button only after the user selects a character
@@ -64,9 +64,9 @@ const obsMush = new Image();
     obsMush.src = "images/neon_mush.png";
   let obsMushX = myCanvas.width;
   let obsMushY;
-  let obsMushWidth = 10;
-  let obsMushHeight = 10;
-  let obsMushSpeed = -3.2;
+  let obsMushWidth = 40;
+  let obsMushHeight = 40;
+  let obsMushSpeed = -4;
 
 
 const drawMushObstacles = () => {
@@ -83,9 +83,9 @@ const obsCards = new Image();
     obsCards.src = "images/card.png";
   let obsCardsX = myCanvas.width;
   let obsCardsY;
-  let obsCardsWidth = 60;
-  let obsCardsHeight = 35;
-  let obsCardsSpeed = -1.2;
+  let obsCardsWidth = 90;
+  let obsCardsHeight = 120;
+  let obsCardsSpeed = -2.8;
 
 const drawCardsObstacles = () => {
     obsCardsX += obsCardsSpeed;
@@ -95,16 +95,14 @@ const drawCardsObstacles = () => {
     }
 }
 
-
-
 // Drink me potion
 const obsPotion = new Image();
     obsPotion.src = "images/potion.png";
   let obsPotionX = myCanvas.width;
   let obsPotionY;
-  let obsPotionWidth = 45;
-  let obsPotionHeight = 15;
-  let obsPotionSpeed = -1.7;
+  let obsPotionWidth = 70;
+  let obsPotionHeight = 40;
+  let obsPotionSpeed = -3.5;
 
 
 const drawPotionObstacles = () => {
